@@ -18,6 +18,7 @@ class ListView:
 
         table.add_column("ID", justify="right", style="cyan", no_wrap=True)
         table.add_column("Title", style="magenta")
+        table.add_column("Tags", style="red")
         table.add_column("Status")
         table.add_column("Created", justify="right", style="green")
 
@@ -27,4 +28,7 @@ class ListView:
         console.print(table)
 
     def get_row(self, item: Item) -> str:
-        return (f"#{item.id}", item.title, item.state, get_time_difference(item.created_at))
+        return (f"#{item.id}", item.title, self.get_tags(item.tags), item.state, get_time_difference(item.created_at))
+
+    def get_tags(self, tags: List[str]) -> str:
+        return " ".join(map(lambda i: f"+{i}", tags))

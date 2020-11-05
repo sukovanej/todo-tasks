@@ -13,6 +13,7 @@ class Editor:
                 tmp.write(self._content)
 
             os.system(f"$EDITOR {filename} || nvim {filename} || vim {filename}")
+
             with open(filename, 'r') as tmp:
                 return tmp.read()
         finally:

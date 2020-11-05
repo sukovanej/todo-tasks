@@ -26,6 +26,7 @@ class Item(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: Optional[datetime] = None
     state: ItemState = ItemState.NEW
+    tags: List[str] = []
     title: str
 
     class Config:

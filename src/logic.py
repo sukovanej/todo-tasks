@@ -24,7 +24,7 @@ class Logic:
     def edit(self, task_id: int) -> Item:
         item_id = next(i for i, item in enumerate(self._data.items) if item.id == task_id)
         item = self._data.items[item_id]
-        editor = Editor(yaml.dump(item.dict(include={"title", "state"})))
+        editor = Editor(yaml.dump(item.dict(include={"title", "state", "tags"})))
         new_item_dict = yaml.safe_load(editor.edit())
         self._data.items[item_id] = Item(**{**item.dict(), **new_item_dict})
         return self._data
