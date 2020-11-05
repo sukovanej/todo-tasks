@@ -6,7 +6,7 @@ class Editor:
     def __init__(self, content: str) -> None:
         self._content = content
 
-    def edit(self) -> None:
+    def edit(self) -> str:
         new_file, filename = tempfile.mkstemp(".yaml")
         try:
             with os.fdopen(new_file, "w") as tmp:

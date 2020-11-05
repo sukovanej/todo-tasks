@@ -29,9 +29,9 @@ def init() -> None:
     data_loader = DataLoader()
 
     if data_loader.exists():
-        print("Init file already exists :thumbs_up:")
+        print("Init file already exists", ":sad_panda:")
     else:
-        print("Tasks succesfully initialized :thumbs_up:")
+        print("Tasks succesfully initialized", ":thumbs_up:")
         data_loader.init()
 
 
@@ -74,7 +74,7 @@ def add(state: str, title: str) -> None:
 
 @click.command()
 @click.argument("task_id", type=int)
-def remove(task_id: str) -> None:
+def remove(task_id: int) -> None:
     data_loader = DataLoader()
     data = data_loader.load()
 
@@ -87,7 +87,7 @@ def remove(task_id: str) -> None:
 
 @click.command()
 @click.argument("task_id", type=int)
-def edit(task_id: str) -> None:
+def edit(task_id: int) -> None:
     data_loader = DataLoader()
     data = data_loader.load()
 

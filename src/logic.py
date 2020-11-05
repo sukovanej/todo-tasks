@@ -18,11 +18,11 @@ class Logic:
         self._data.items.append(Item(id=new_id, title=title, state=ItemState(state)))
         return self._data
 
-    def remove(self, task_id: int) -> None:
+    def remove(self, task_id: int) -> Data:
         self._data.items = [i for i in self._data.items if i.id != task_id]
         return self._data
 
-    def edit(self, task_id: int) -> Item:
+    def edit(self, task_id: int) -> Data:
         item_id = next(i for i, item in enumerate(self._data.items) if item.id == task_id)
         item = self._data.items[item_id]
         editor = Editor(yaml.dump(item.dict(include={"title", "state", "tags"})))

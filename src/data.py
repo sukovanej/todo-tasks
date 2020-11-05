@@ -20,7 +20,7 @@ class DataLoader:
             f.write(Data().json())
 
         global_config = self.load_global_config()
-        global_config.all_projects.append(self._filename)
+        global_config.all_projects.append(str(self._filename))
         self.save_global_config(global_config)
 
     def load(self) -> Data:

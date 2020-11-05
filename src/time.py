@@ -25,3 +25,5 @@ def get_time_difference(input_datetime: datetime) -> str:
 
     if (x := now.second - input_datetime.second) != 0:
         return f"{x} second{_plurality(x)} ago"
+
+    raise Exception("unexpected error")

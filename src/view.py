@@ -12,7 +12,7 @@ class ListView:
     def __init__(self, items: List[Item]) -> None:
         self._items = items
 
-    def print(self) -> str:
+    def print(self) -> None:
         console = Console()
         table = Table()
 
@@ -27,14 +27,14 @@ class ListView:
 
         console.print(table)
 
-    def get_row(self, item: Item) -> str:
-        return (
+    def get_row(self, item: Item) -> List[str]:
+        return [
             f"#{item.id}",
             item.title,
             self.get_tags(item.tags),
-            item.state,
+            str(item.state),
             get_time_difference(item.created_at),
-        )
+        ]
 
     def get_tags(self, tags: List[str]) -> str:
         return " ".join(map(lambda i: f"+{i}", tags))
