@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "todo-tasks"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Milan Suk <Milansuk@email.cz>"]
 packages = [ { include = "src" } ]
@@ -24,4 +24,4 @@ requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry.scripts]
-tasks = 'tasks.entrypoint:run'
+tasks = 'src.entrypoint:run'
