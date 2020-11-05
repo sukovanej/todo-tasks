@@ -25,3 +25,6 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry.scripts]
 tasks = 'src.entrypoint:run'
+
+[tool.black]
+line-length = 120

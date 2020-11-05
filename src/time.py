@@ -1,7 +1,9 @@
 from datetime import datetime
 
+
 def _plurality(x: int) -> str:
     return "" if x == 1 else "s"
+
 
 def get_time_difference(input_datetime: datetime) -> str:
     now = datetime.now()

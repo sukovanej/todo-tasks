@@ -1,8 +1,8 @@
 from typing import List
 
 from rich import print
-from rich.table import Table
 from rich.console import Console
+from rich.table import Table
 
 from .models import Data, Item
 from .time import get_time_difference
@@ -28,7 +28,13 @@ class ListView:
         console.print(table)
 
     def get_row(self, item: Item) -> str:
-        return (f"#{item.id}", item.title, self.get_tags(item.tags), item.state, get_time_difference(item.created_at))
+        return (
+            f"#{item.id}",
+            item.title,
+            self.get_tags(item.tags),
+            item.state,
+            get_time_difference(item.created_at),
+        )
 
     def get_tags(self, tags: List[str]) -> str:
         return " ".join(map(lambda i: f"+{i}", tags))

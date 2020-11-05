@@ -1,6 +1,7 @@
 import json
-import yaml
 from typing import List
+
+import yaml
 
 from .editor import Editor
 from .models import Data, Item, ItemState

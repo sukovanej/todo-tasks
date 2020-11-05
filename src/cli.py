@@ -2,8 +2,8 @@ import click
 from rich import print
 
 from .data import DataLoader
-from .view import ListView
 from .logic import Logic
+from .view import ListView
 
 
 class AliasedGroup(click.Group):
@@ -27,7 +27,6 @@ def cli() -> None:
 @click.command()
 def init() -> None:
     data_loader = DataLoader()
-    data_loader.create_global_config_if_not_exists()
 
     if data_loader.exists():
         print("Init file already exists :thumbs_up:")
@@ -37,6 +36,7 @@ def init() -> None:
 
 
 @click.command()
+@click.option("-s", "--state", default="NEW", type=str)
 def list_all() -> None:
     data_loader = DataLoader()
     data = data_loader.load()
