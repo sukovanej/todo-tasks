@@ -3,7 +3,7 @@ from rich import print
 
 from .data import DataLoader
 from .logic import Logic
-from .view import ListView
+from .view import BasicTableView, BasicTableViewWithProjects
 
 
 class AliasedGroup(click.Group):
@@ -36,13 +36,18 @@ def init() -> None:
 
 
 @click.command()
-@click.option("-s", "--state", default="NEW", type=str)
-def list_all() -> None:
+@click.option("-a", "--all-projects", default=False, type=bool, is_flag=True)
+def list_all(all_projects: bool) -> None:
     data_loader = DataLoader()
-    data = data_loader.load()
-    logic = Logic(data)
-    items = logic.list_all()
-    view = ListView(items)
+
+    if all_projects:
+        data = data_loader.load_all()
+        view_class = BasicTableViewWithProjects
+    else:
+        data = data_loader.load().items
+        view_class = BasicTableView
+
+    view = view_class(data)
     view.print()
 
 
@@ -51,7 +56,7 @@ def list_all() -> None:
 def drop() -> None:
     data_loader = DataLoader()
     data_loader.drop()
-    print("Local tasks lost forever :sad_panda:")
+    print("Local tasks lost forever", ":sad_panda:")
 
 
 @click.command()

@@ -11,9 +11,6 @@ class Logic:
     def __init__(self, data: Data) -> None:
         self._data = data
 
-    def list_all(self) -> List[Item]:
-        return self._data.items
-
     def add(self, title: str, new_id: int, state: str) -> Data:
         self._data.items.append(Item(id=new_id, title=title, state=ItemState(state)))
         return self._data

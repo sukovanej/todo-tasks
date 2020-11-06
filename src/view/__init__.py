@@ -1,0 +1,2 @@
+from .basic_table_view import BasicTableView
+from .basic_table_view_with_projects import BasicTableViewWithProjects

@@ -1,8 +1,9 @@
 import json
 import os
 from pathlib import Path
+from typing import List
 
-from .models import Data, DataPerProject, GlobalConfig
+from .models import Data, ItemWithProject, GlobalConfig
 
 
 class DataLoader:
@@ -23,19 +24,20 @@ class DataLoader:
         global_config.all_projects.append(str(self._filename))
         self.save_global_config(global_config)
 
-    def load(self) -> Data:
-        with open(self._filename, "r") as f:
+    def load(self, filename = None) -> Data:
+        with open(filename or self._filename, "r") as f:
             return Data(**json.load(f))
 
-    def load_all(self) -> DataPerProject:
+    def load_all(self) -> List[ItemWithProject]:
         global_config = self.load_global_config()
-        data_per_project = {}
+        data = []
 
         for filename in global_config.all_projects:
-            with open(filename, "r") as f:
-                data_per_project[filename] = Data(**json.load(f))
+            project = os.path.dirname(filename)
+            for item in self.load(filename).items:
+                data.append(ItemWithProject(project=project, **item.dict()))
 
-        return data_per_project
+        return data
 
     def create_global_config_if_not_exists(self) -> None:
         if not os.path.exists(self._global_config_filename):

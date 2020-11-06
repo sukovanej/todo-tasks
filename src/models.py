@@ -32,6 +32,9 @@ class Item(BaseModel):
     class Config:
         use_enum_values = True
 
+class ItemWithProject(Item):
+    project: str
+
 
 class Data(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now)
