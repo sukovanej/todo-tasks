@@ -7,9 +7,18 @@ from typing import Dict, List, Optional
 from pydantic import BaseModel, Field
 
 
+class ItemIndex:
+    id: int
+    project: str
+
+
+Tag = str
+
+
 class GlobalConfig(BaseModel):
     all_projects: List[str] = []
     items_counter: int = 0
+    tags_index: Dict[Tag, ItemIndex]
 
     def increase_items_counter(self) -> None:
         self.items_counter += 1
@@ -26,7 +35,7 @@ class Item(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: Optional[datetime] = None
     state: ItemState = ItemState.NEW
-    tags: List[str] = []
+    tags: List[Tag] = []
     title: str
 
     class Config:
