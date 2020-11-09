@@ -113,6 +113,12 @@ def projects() -> None:
         print(f" - {project}")
 
 
+@click.command()
+def version() -> None:
+    import importlib.metadata
+    print(importlib.metadata.version('todo-tasks'))
+
+
 cli.add_command(add)
 cli.add_command(edit)
 cli.add_command(remove)
@@ -122,3 +128,4 @@ cli.add_command(drop)
 cli.add_command(config)
 cli.add_command(set_config)
 cli.add_command(projects)
+cli.add_command(version)
