@@ -1,14 +1,10 @@
 from typing import List, Optional
 
-from rich import print
-from rich.console import Console
 from rich.table import Table
 
-from ..models import Data, Item
-from ..time import get_time_difference
-
-from .table import TableView
+from ..models import Item
 from .item_mixin import ItemMixin
+from .table import TableView
 
 
 class BasicTableView(TableView, ItemMixin):

@@ -4,9 +4,8 @@ from rich.table import Table
 
 from ..models import ItemWithProject
 from ..time import get_time_difference
-
-from .table import TableView
 from .item_mixin import ItemMixin
+from .table import TableView
 
 
 class BasicTableViewWithProjects(TableView, ItemMixin):
