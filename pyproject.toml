@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "todo-tasks"
-version = "0.1.2"
+version = "0.1.3"
 description = ""
 authors = ["Milan Suk <Milansuk@email.cz>"]
 packages = [ { include = "src" } ]
+readme = "readme.md"
+homepage = "https://github.com/sukovanej/todo-tasks"
+repository = "https://github.com/sukovanej/todo-tasks"
 
 [tool.poetry.dependencies]
 python = "^3.8"
